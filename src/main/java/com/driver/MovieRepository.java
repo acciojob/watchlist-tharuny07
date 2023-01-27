@@ -63,6 +63,8 @@ public class MovieRepository {
             for(String movie:directorMovieDB.get(director)){
                 movieSet.add(movie);
             }
+            if(directorDB.containsKey(director)) directorDB.remove(director);
+            directorMovieDB.remove(director);
         }
         for(String movies:movieSet){
             if(movieDB.containsKey(movies)){
