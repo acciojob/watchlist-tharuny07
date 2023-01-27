@@ -24,6 +24,8 @@ public class MovieRepository {
     }
     public void addMovieDirectorPair(String movieName,String directorName){
         if(movieDB.containsKey(movieName)&& movieDB.containsKey(directorName)){
+            movieDB.put(movieName,movieDB.get(movieName));
+            directorDB.put(directorName,directorDB.get(directorName));
             List<String> movies=new ArrayList<>();
             if(directorMovieDB.containsKey(directorName)) movies=directorMovieDB.get(directorName);
             movies.add(movieName);
@@ -38,7 +40,7 @@ public class MovieRepository {
         return directorDB.get(directorName);
     }
     public List<String> getMovies(String directorName){
-        List<String> movies=new ArrayList<>();
+        List<String> movies=new ArrayList<String>();
         if(directorMovieDB.containsKey(directorName)) movies=directorMovieDB.get(directorName);
         return movies;
     }
@@ -58,13 +60,11 @@ public class MovieRepository {
         }
     }
     public void deleteAllMovies(){
-        Set<String> movieSet=new HashSet<>();
+        HashSet<String> movieSet=new HashSet<String>();
         for(String director:directorMovieDB.keySet()){
             for(String movie:directorMovieDB.get(director)){
                 movieSet.add(movie);
             }
-            if(directorDB.containsKey(director)) directorDB.remove(director);
-            directorMovieDB.remove(director);
         }
         for(String movies:movieSet){
             if(movieDB.containsKey(movies)){
