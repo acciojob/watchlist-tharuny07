@@ -23,7 +23,7 @@ public class MovieController {
         return new ResponseEntity<>(movieService.addDirector(director), HttpStatus.ACCEPTED);
     }
     @PutMapping("/movies/add-movie-director-pair")
-    public ResponseEntity addMovieDirectiorPair(@RequestParam("movieName") String movieName, @RequestParam("directorName") String directorName){
+    public ResponseEntity addMovieDirectorPair(@RequestParam("movieName") String movieName, @RequestParam("directorName") String directorName){
         return new ResponseEntity<>(movieService.addMovieDirectorPair(movieName,directorName), HttpStatus.ACCEPTED);
     }
 
